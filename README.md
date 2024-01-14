@@ -24,8 +24,8 @@ portal_username = [YOUR_MAIL]
 portal_password = [YOUR_PORTAL_PW]
 
 [employer]
-login_url = [YOUR_ACONSO_PORTAL_URL]
-document_url_template = [YOUR_ACONSO_PORTAL_WEBVEIWER_URL_WITH_FILE] #e.g https:/youremployerportal.com/ui5/apps/documentboxui5/resources/external/nabi/m/thirdparty/pdfjs/web/viewer.html?file=%%2Fapi%%2Fv1%%2Finternal%%2Fdocuments%%2F{document_index}%%2Fpdf
+login_url = [YOUR_EMPLOYER_ACONSO_PORTAL_URL]
+document_url_template = [YOUR_EMPLOYER_ACONSO_PORTAL_WEBVIEWER_URL_WITH_FILE] #e.g https:/youremployerportal.com/ui5/apps/documentboxui5/resources/external/nabi/m/thirdparty/pdfjs/web/viewer.html?file=%%2Fapi%%2Fv1%%2Finternal%%2Fdocuments%%2F{document_index}%%2Fpdf
 
 ```
 
