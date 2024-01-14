@@ -11,11 +11,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+config_file_path = os.path.join(script_dir, 'config.ini')
+
 # Conf Logger
-logging.basicConfig(filename='AconsoDL.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename=os.path.join(script_dir, 'AconsoDL.log'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Constants
-CONFIG_FILE = "config.ini"
+CONFIG_FILE = config_file_path
 
 @contextlib.contextmanager
 def suppress_output():
@@ -59,8 +62,11 @@ def retrieve_portal_credentials(config):
     portal_password  = config.get("Portal", "portal_password")
     return email_selector, password_selector, login_button_selector, portal_username, portal_password
 
-def is_file_already_downloaded(filename, document_index, log_file):
-    with open(log_file, "r") as file:
+def is_file_already_downloaded(filename, document_index, download_history_file):
+    if not os.path.exists(os.path.join(script_dir, download_history_file)):
+        with open(os.path.join(script_dir, download_history_file), 'w') as file:
+            pass
+    with open(os.path.join(script_dir, download_history_file), "r") as file:
         lines = file.readlines()
         for line in lines:
             parts = line.strip().split()
@@ -68,9 +74,13 @@ def is_file_already_downloaded(filename, document_index, log_file):
                 return True
     return False
 
-def mark_file_as_downloaded(filename, document_index, log_file):
-    with open(log_file, "a") as file:
-        file.write(f"{filename} {document_index}\n")
+def mark_file_as_downloaded(filename, document_index, download_history_file):
+    if not os.path.exists(os.path.join(script_dir, download_history_file)):
+        with open(os.path.join(script_dir, download_history_file), 'w') as file:
+            file.write(f"{filename} {document_index}\n")
+    else:
+        with open(os.path.join(script_dir, download_history_file), "a") as file:
+            file.write(f"{filename} {document_index}\n")
 
 def main():
     config = read_config(CONFIG_FILE)
