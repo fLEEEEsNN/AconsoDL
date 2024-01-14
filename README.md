@@ -8,7 +8,7 @@ In the root folder (same as AconsoDL.py) you need a config.ini e.g:
 ```
 [Script]
 download_path = [YOUR_DL_PATH]
-download_history_file = [YOUR_DL_HISTORY_FILE] #e.g dl_history.txt
+download_history_file = [YOUR_DL_HISTORY_FILE] #placed in script root like config.ini -> e.g dl_history.txt
 
 [Email]
 username = [YOUR_MAIL]
