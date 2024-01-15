@@ -3,7 +3,8 @@
 ## Getting Started
 
 Download a copy of this project.
-In the root folder (same as AconsoDL.py) you need a config.ini e.g:
+In the root folder (same as AconsoDL.py) you need a config.ini, change it to your needs.
+Use this template:
 
 ```
 [Script]
@@ -31,8 +32,6 @@ document_url_template = [YOUR_EMPLOYER_ACONSO_PORTAL_WEBVIEWER_URL_WITH_FILE] #e
 ```
 
 Install dependecies like shown below under "Prerequisites".
-Change "config.ini" to your needs.
-Enjoy!
 
 ### Prerequisites
 
@@ -42,6 +41,9 @@ pip install selenium
 pip install webdrivermanager
 webdrivermanager firefox --linkpath /usr/local/bin
 ```
+
+RUn the Script...
+Enjoy!
 
 ## Authors
 
