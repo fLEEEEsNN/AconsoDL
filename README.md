@@ -15,6 +15,7 @@ username = [YOUR_MAIL]
 password = [YOUR_MAIL_PW]
 imap_url = [IMAP_URL_OF_YOUR_MAIL_PROVIDER] #e.g imap.gmail.com or imap-mail.outlook.com etc.
 sender = [SENDER_MAIL_ADDRESS_TO_CHECK] #noreply@youremployerportal.com
+subject = subject text here
 
 [Portal]
 email_selector = [mail_box_element_selector] #e.g __xmlview0--_Login-Input-Email_-inner
