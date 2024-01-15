@@ -52,7 +52,8 @@ def retrieve_email_credentials(config):
     password = config.get("Email", "password")
     imap_url = config.get("Email", "imap_url")
     sender = config.get("Email", "sender")
-    return username, password, imap_url, sender
+    subject = config.get("Email", "subject")
+    return username, password, imap_url, sender, subject
 
 def retrieve_portal_credentials(config):
     email_selector = config.get("Portal", "email_selector")
@@ -84,7 +85,7 @@ def mark_file_as_downloaded(filename, document_index, download_history_file):
 
 def main():
     config = read_config(CONFIG_FILE)
-    email_username, email_password, email_imap_url, sender = retrieve_email_credentials(config)
+    email_username, email_password, email_imap_url, sender, subject = retrieve_email_credentials(config)
     portal_email_selector, portal_password_selector, portal_login_button_selector, portal_username, portal_password = retrieve_portal_credentials(config)
     employer_login_url, employer_document_url_template = retrieve_employer_info(config)
     download_path, download_history_file = retrieve_script_settings(config)
@@ -106,9 +107,9 @@ def main():
         msg = email.message_from_bytes(msg_data[0][1])
 
         # Prüfe den Betreff der neuesten E-Mail
-        subject = msg.get("Subject", "")
+        mail_subject = msg.get("Subject", "")
 
-        if "HR Document Box: Neues Dokument abgelegt" in subject:
+        if subject.lower() in mail_subject.lower():
             # ANALYSE BODY
             if msg.is_multipart():
                 for part in msg.walk():
