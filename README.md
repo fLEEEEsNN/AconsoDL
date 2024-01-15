@@ -42,7 +42,7 @@ pip install webdrivermanager
 webdrivermanager firefox --linkpath /usr/local/bin
 ```
 
-RUn the Script...
+Now run the Script...
 Enjoy!
 
 ## Authors
